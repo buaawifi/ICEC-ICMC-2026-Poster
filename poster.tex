@@ -1,5 +1,11 @@
 % !TeX program = xelatex
 % ICEC30/ICMC2026 poster, SMU/Gemini two-column IMRD&C layout.
+% Keep Overleaf builds self-contained: local builds set TEXINPUTS in build.ps1,
+% while Overleaf needs the bundled support folders declared from the source.
+\makeatletter
+\def\input@path{{./}{vendor/beamerposter/}{vendor/gemini-local/}{vendor/beamerposter/translator_pkg/translator/}}
+\makeatother
+
 \documentclass[final]{beamer}
 
 \usepackage[size=custom,width=90,height=150,scale=1.13]{beamerposter}
