@@ -101,55 +101,76 @@ A corrugated 316L membrane is introduced to turn this constraint into a geometri
 
 The remaining question is experimental rather than purely geometric: after patent-based forming, specimen preparation, and cyclic loading, does the membrane still follow the intended strain-release mechanism, and can an assembled module retain preliminary integrity after cryogenic cycling?
 
-This poster therefore links three checks into one validation chain: DIC/PLC maps where imposed displacement is released, AE monitors cyclic damage activity during repeated loading, and pressure-hold plus helium leak testing are used as the pressure-retention method to verify assembly integrity after LN$_2$ fill/drain cycles.
+Because full cryogenic apparatus is difficult and costly, this poster uses a staged validation chain: a room-temperature four-axis stretching apparatus simulates the contraction demand, DIC maps global strain redistribution during the first 50 cycles of two specimens, AE follows damage activity for a selected specimen to 470 cycles, and a pilot membrane is checked by LN$_2$ cycling plus pressure-retention testing.
 
 \begin{center}
-\resizebox{0.96\linewidth}{!}{%
+\resizebox{0.98\linewidth}{!}{%
 \begin{tikzpicture}[
   font=\rmfamily,
-  panel/.style={rounded corners=4pt,line width=0.65pt,draw=black!18,fill=white,minimum width=4.35cm,minimum height=3.05cm,inner sep=0pt},
-  flow/.style={-{Latex[length=2.8mm,width=1.9mm]},line width=0.92pt,draw=black!55},
-  load/.style={-{Latex[length=2.45mm,width=1.75mm]},line width=0.88pt,draw=smured!82},
-  stage/.style={font=\bfseries\fontsize{6.2}{7.0}\selectfont,align=center},
-  sublabel/.style={font=\fontsize{4.2}{5.0}\selectfont,align=center,text=black!72,text width=4.25cm},
-  evidence/.style={rounded corners=2.5pt,line width=0.65pt,minimum width=3.55cm,minimum height=0.56cm,align=center,font=\bfseries\fontsize{5.2}{6.0}\selectfont,inner sep=2pt}
+  mech/.style={rounded corners=3.5pt,line width=0.62pt,draw=black!20,fill=white,minimum width=3.55cm,minimum height=1.55cm,inner sep=0pt},
+  test/.style={rounded corners=3pt,line width=0.62pt,minimum width=3.65cm,minimum height=1.08cm,align=center,font=\fontsize{4.35}{5.1}\selectfont,inner sep=2pt},
+  arr/.style={-{Latex[length=2.35mm,width=1.55mm]},line width=0.75pt,draw=black!52},
+  load/.style={-{Latex[length=1.9mm,width=1.3mm]},line width=0.72pt,draw=smured!82},
+  title/.style={font=\bfseries\fontsize{5.9}{6.7}\selectfont,align=center},
+  note/.style={font=\fontsize{3.85}{4.45}\selectfont,align=center,text=black!70,text width=3.25cm}
 ]
-\node[panel,fill=smublue!3] at (0,0) {};
-\node[panel,fill=smugold!5] at (8.10,0) {};
-\node[panel,fill=smucyan!4] at (16.20,0) {};
+\node[mech,fill=smublue!3] (tank) at (0,1.02) {};
+\node[mech,fill=smublue!3] (contract) at (5.05,1.02) {};
+\node[mech,fill=smugold!5] (corr) at (10.10,1.02) {};
+\node[mech,fill=smucyan!4] (target) at (15.15,1.02) {};
 
-\node[stage,text=smunavy] at (0,1.17) {Cool-down};
-\node[stage,text=smugold!75!black] at (8.10,1.17) {Corrugation};
-\node[stage,text=smucyan!70!black] at (16.20,1.17) {Checks};
+\node[title,text=smunavy] at (0,1.52) {LH$_2$ tank cool-down};
+\draw[line width=0.76pt,draw=smunavy!70,fill=smublue!8,rounded corners=0.35cm] (-1.12,0.86) rectangle (1.12,1.16);
+\draw[line width=1.05pt,draw=smunavy] (-0.92,1.01) -- (0.92,1.01);
+\draw[load] (-1.42,1.01) -- (-1.12,1.01);
+\draw[load] (1.42,1.01) -- (1.12,1.01);
+\node[note] at (0,0.48) {temperature drop drives thermal contraction};
 
-\draw[line width=0.95pt,draw=smunavy!72,fill=smublue!5,rounded corners=2pt] (-1.55,-0.20) rectangle (1.55,0.38);
-\draw[line width=1.22pt,draw=smunavy] (-1.28,0.09) -- (1.28,0.09);
-\draw[load] (-1.98,0.09) -- (-1.55,0.09);
-\draw[load] (1.98,0.09) -- (1.55,0.09);
-\node[font=\bfseries\fontsize{4.6}{5.2}\selectfont,text=smured!82!black] at (0,0.70) {primary barrier};
-\node[sublabel] at (0,-0.92) {in-plane displacement\\from cool-down};
+\node[title,text=smured!82!black] at (5.05,1.52) {Primary layer demand};
+\draw[line width=0.82pt,draw=smured!75,fill=smured!5,rounded corners=1.5pt] (3.83,0.83) rectangle (6.27,1.20);
+\draw[load] (3.48,1.02) -- (3.83,1.02);
+\draw[load] (6.62,1.02) -- (6.27,1.02);
+\node[note] at (5.05,0.48) {unreleased strain risks stress concentration};
 
-\draw[flow] (2.75,0.05) -- (5.60,0.05);
+\node[title,text=smugold!75!black] at (10.10,1.52) {Corrugation response};
+\draw[line width=1.06pt,draw=smunavy]
+  (8.82,1.00)
+  .. controls (9.15,1.43) and (9.48,1.43) .. (9.81,1.00)
+  .. controls (10.14,0.57) and (10.47,0.57) .. (10.80,1.00)
+  .. controls (11.13,1.43) and (11.46,1.43) .. (11.79,1.00);
+\draw[dashed,line width=0.50pt,draw=black!32] (8.82,1.00) -- (11.79,1.00);
+\draw[load,draw=smugold!88!black] (9.52,1.50) arc[start angle=140,end angle=35,radius=0.31cm];
+\draw[load,draw=smugold!88!black] (10.92,0.50) arc[start angle=-44,end angle=-145,radius=0.31cm];
+\node[note] at (10.10,0.35) {bending/rotation absorbs contraction and lowers stress};
 
-\draw[line width=1.32pt,draw=smunavy]
-  (6.53,0.05)
-  .. controls (6.87,0.63) and (7.30,0.63) .. (7.64,0.05)
-  .. controls (7.98,-0.53) and (8.41,-0.53) .. (8.75,0.05)
-  .. controls (9.09,0.63) and (9.52,0.63) .. (9.86,0.05);
-\draw[dashed,line width=0.62pt,draw=black!35] (6.53,0.05) -- (9.86,0.05);
-\draw[load,draw=smugold!88!black] (7.23,0.76) arc[start angle=140,end angle=36,radius=0.39cm];
-\draw[load,draw=smugold!88!black] (9.16,-0.66) arc[start angle=-44,end angle=-145,radius=0.39cm];
-\node[sublabel] at (8.10,-0.92) {bending/rotation\\reduces sheet stretch};
+\node[title,text=smucyan!70!black] at (15.15,1.52) {Integrity target};
+\draw[line width=0.80pt,draw=smucyan!80!black,fill=smucyan!8,rounded corners=2pt] (14.08,0.80) rectangle (16.22,1.20);
+\node[font=\bfseries\fontsize{4.3}{5.0}\selectfont,text=smunavy] at (15.15,1.00) {leak-tight barrier};
+\node[note] at (15.15,0.48) {performance must be verified by experiments};
 
-\draw[flow] (10.85,0.05) -- (13.70,0.05);
+\draw[arr] (tank.east) -- (contract.west);
+\draw[arr] (contract.east) -- (corr.west);
+\draw[arr] (corr.east) -- (target.west);
 
-\node[evidence,draw=smublue,fill=smublue!9] at (16.20,0.47) {DIC/PLC strain field};
-\node[evidence,draw=smured,fill=smured!8] at (16.20,-0.15) {AE cyclic activity};
-\node[evidence,draw=smucyan,fill=smucyan!8] at (16.20,-0.77) {Pressure-retention test};
-\node[sublabel] at (16.20,-1.22) {assembly integrity};
+\node[font=\bfseries\fontsize{4.8}{5.6}\selectfont,text=black!64] at (7.60,-0.10)
+  {Cryogenic apparatus is difficult and costly, so validation is staged};
+
+\node[test,draw=smublue,fill=smublue!8] (stretch) at (0,-1.18)
+  {\textbf{4-axis stretcher}\\room-temperature\\thermal-contraction surrogate};
+\node[test,draw=smucyan,fill=smucyan!8] (dic) at (5.05,-1.18)
+  {\textbf{DIC field test}\\50 cycles\\2 specimens};
+\node[test,draw=smured,fill=smured!7] (ae) at (10.10,-1.18)
+  {\textbf{AE monitoring}\\selected specimen\\to 470 cycles};
+\node[test,draw=smugold!90!black,fill=smugold!10] (ln2) at (15.15,-1.18)
+  {\textbf{Pilot membrane}\\LN$_2$ cycles\\pressure-retention check};
+
+\draw[arr] (stretch.east) -- (dic.west);
+\draw[arr] (dic.east) -- (ae.west);
+\draw[arr] (ae.east) -- (ln2.west);
+\draw[arr,draw=black!38] (target.south) -- (15.15,-0.56);
 \end{tikzpicture}}
 \end{center}
-\smallnote{Conceptual schematic: cryogenic contraction sets the displacement demand; corrugation supplies the intended strain-release mechanism; pressure-retention testing checks assembled-membrane integrity after LN$_2$ cycling.}
+\smallnote{Conceptual schematic: cool-down contraction creates the primary-layer displacement demand; corrugations absorb the demand by geometric compliance; room-temperature DIC and AE tests screen strain redistribution and damage evolution before LN$_2$ cycling plus pressure-retention checks verify pilot-membrane integrity.}
 \end{posterblock}
 
 \begin{posterblock}{white}{smugold}{smunavy}{smucream}{M. Methods: Design-to-Test Logic Chain}
