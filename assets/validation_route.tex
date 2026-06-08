@@ -1,0 +1,119 @@
+% ---------- Panel C: Validation route ----------
+\begin{tikzpicture}[
+    font=\rmfamily,
+    node distance=0.36cm,
+    stage/.style={
+        draw=black!70,
+        rounded corners=3pt,
+        line width=0.55pt,
+        fill=black!3,
+        align=center,
+        text width=0.90\linewidth,
+        inner xsep=4pt,
+        inner ysep=5pt,
+        font=\rmfamily\footnotesize
+    },
+    evidence/.style={
+        draw=black!45,
+        rounded corners=2pt,
+        line width=0.4pt,
+        fill=white,
+        align=center,
+        text width=0.90\linewidth,
+        inner xsep=4pt,
+        inner ysep=3pt,
+        font=\rmfamily\scriptsize
+    },
+    result/.style={
+        draw=black!70,
+        rounded corners=3pt,
+        line width=0.55pt,
+        fill=black!6,
+        align=center,
+        text width=0.90\linewidth,
+        inner xsep=4pt,
+        inner ysep=5pt,
+        font=\rmfamily\scriptsize
+    },
+    future/.style={
+        draw=black!60,
+        dashed,
+        rounded corners=3pt,
+        line width=0.5pt,
+        fill=white,
+        align=center,
+        text width=0.90\linewidth,
+        inner xsep=4pt,
+        inner ysep=4pt,
+        font=\rmfamily\scriptsize
+    },
+    arrow/.style={
+        -{Latex[length=2.2mm,width=1.5mm]},
+        line width=0.6pt
+    },
+    link/.style={
+        line width=0.35pt,
+        black!45
+    }
+]
+
+% Title
+\node[font=\bfseries\small, align=center] (title)
+{(C) Experimental validation route};
+
+% Stage 1
+\node[stage, below=0.38cm of title] (dic)
+{\textbf{Room-temperature DIC tensile test}\\
+Controlled displacement loading};
+
+\node[evidence, below=0.07cm of dic] (dicout)
+{Isolate corrugation-driven strain redistribution\\
+\emph{Mechanism test, not full LH$_2$ qualification}};
+
+% Stage 2
+\node[stage, below=0.42cm of dicout] (ae)
+{\textbf{AE-monitored cyclic loading}\\
+Target 400-cycle window};
+
+\node[evidence, below=0.07cm of ae] (aeout)
+{Screen cyclic activity and deformation stability\\
+\emph{Damage monitoring, not standalone crack proof}};
+
+% Stage 3
+\node[stage, below=0.42cm of aeout] (ln2)
+{\textbf{0.2~m$^{3}$ integrated demonstrator}\\
+5$\times$ LN$_2$ filling/draining cycles};
+
+\node[evidence, below=0.07cm of ln2] (ln2out)
+{Apply cryogenic thermal excursions at assembly scale};
+
+% Stage 4
+\node[stage, below=0.42cm of ln2out] (leak)
+{\textbf{Pressure hold + helium leak check}\\
+Gas-tightness assessment after cycling};
+
+% Output
+\node[result, below=0.42cm of leak] (output)
+{\textbf{Present evidence}\\
+Deformation accommodation + cyclic-response screening\\
++ preliminary cryogenic integrity};
+
+% Future boundary
+\node[future, below=0.40cm of output] (future)
+{\textbf{Next qualification step}\\
+Mechanical validation at LH$_2$ temperature};
+
+% Connectors
+\draw[link]  (dic) -- (dicout);
+\draw[arrow] (dicout) -- (ae);
+
+\draw[link]  (ae) -- (aeout);
+\draw[arrow] (aeout) -- (ln2);
+
+\draw[link]  (ln2) -- (ln2out);
+\draw[arrow] (ln2out) -- (leak);
+
+\draw[arrow] (leak) -- (output);
+\draw[arrow,dashed] (output) -- (future);
+
+\end{tikzpicture}
