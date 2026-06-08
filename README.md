@@ -4,7 +4,8 @@ This folder contains a LaTeX poster package for presentation P1-061.
 
 ## Folder Layout
 
-- `poster.tex`: active LaTeX poster source, sized to 90 cm x 150 cm.
+- `poster.tex`: active LaTeX poster driver, sized to 90 cm x 150 cm.
+- `sections/`: section-level poster content files. The active driver currently inputs only `sections/introduction.tex`.
 - `poster.pdf`: final compiled poster.
 - `build.ps1`: local build helper for the active poster.
 - `assets/`: only the logos and figure files referenced by `poster.tex`.
@@ -32,7 +33,7 @@ Copy-Item build\poster.pdf poster.pdf -Force
 
 ## Notes
 
-The active poster uses an SMU/Gemini-inspired beamerposter layout in the required 90 cm x 150 cm portrait size. The content is organized as a two-column IMRD&C presentation: Introduction and Methods on the left, DIC mechanism evidence continuing on the left, then AE/LN2 Results, Discussion, and Conclusions on the right.
+The active poster uses an SMU/Gemini-inspired beamerposter layout in the required 90 cm x 150 cm portrait size. The source is organized as a compact driver plus section-level inputs under `sections/`. At the current revision, only the Introduction section is included in the rendered poster; Methods, DIC Results, AE/LN2 Results, Discussion, and Conclusions are split into separate files and intentionally commented out in `poster.tex`.
 
 The take-home message band has been removed. Each IMRD&C section is now wrapped in an SMU-style colored block with a colored title bar and lightly tinted section background.
 
