@@ -47,8 +47,10 @@
 
 \newlength{\sepwidth}
 \newlength{\colwidth}
+\newlength{\introvisualheight}
 \setlength{\sepwidth}{0.020\paperwidth}
 \setlength{\colwidth}{0.470\paperwidth}
+\setlength{\introvisualheight}{25.0cm}
 \newcommand{\separatorcolumn}{\begin{column}{\sepwidth}\end{column}}
 
 \newcommand{\tightlist}{\setlength{\itemsep}{0.08ex}\setlength{\topsep}{0.08ex}\setlength{\parsep}{0pt}\setlength{\parskip}{0pt}}
@@ -105,20 +107,27 @@ This study experimentally evaluates the corrugated membrane concept using full-f
 
 \vspace{0.8ex}
 \begin{columns}[t,totalwidth=\linewidth]
-\begin{column}{0.49\linewidth}
+\begin{column}[t]{0.49\linewidth}
+\vspace{0pt}
+\begin{minipage}[t][\introvisualheight][s]{\linewidth}
 \centering
 \includegraphics[width=\linewidth,height=12.3cm,keepaspectratio]{assets/membrane_type_storage_tank.png}
 \introcaption{Membrane-type LH$_2$ storage-tank concept and layered containment barrier.}
 
-\vspace{0.55ex}
+\vfill
 \includegraphics[width=\linewidth,height=7.8cm,keepaspectratio]{assets/membrane.png}
 \introcaption{Corrugated membrane geometry used to absorb restrained in-plane contraction.}
+\end{minipage}
 \end{column}
 \hfill
-\begin{column}{0.48\linewidth}
+\begin{column}[t]{0.48\linewidth}
+\vspace{0pt}
+\begin{minipage}[t][\introvisualheight][s]{\linewidth}
 \centering
 \resizebox{0.96\linewidth}{!}{\input{assets/validation_route.tex}}
+\vfill
 \introcaption{Staged validation route linking room-temperature mechanism tests to LN$_2$ cycling and future LH$_2$ qualification.}
+\end{minipage}
 \end{column}
 \end{columns}
 
