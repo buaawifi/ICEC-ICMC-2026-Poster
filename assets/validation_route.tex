@@ -5,9 +5,9 @@
         draw=black!70,
         rounded corners=3pt,
         line width=0.55pt,
-        fill=black!4,
-        text width=8.8cm,
-        minimum height=1.50cm,
+        fill=white,
+        text width=8.20cm,
+        minimum height=1.35cm,
         align=center,
         inner xsep=4pt,
         inner ysep=5pt,
@@ -18,63 +18,75 @@
         rounded corners=3pt,
         line width=0.55pt,
         fill=white,
-        text width=6.4cm,
-        minimum height=1.50cm,
+        text width=6.20cm,
+        minimum height=1.35cm,
         align=center,
         inner xsep=4pt,
         inner ysep=5pt,
         font=\rmfamily\scriptsize
     },
-    head/.style={
+    header/.style={
         font=\rmfamily\bfseries\scriptsize,
-        align=center,
-        text width=5.8cm
+        align=center
     },
     rowarrow/.style={
-        -{Latex[length=2.0mm,width=1.3mm]},
+        -{Latex[length=1.8mm,width=1.2mm]},
         line width=0.45pt,
         black!55
     },
     downarrow/.style={
-        -{Latex[length=2.2mm,width=1.5mm]},
-        line width=0.55pt,
+        -{Latex[length=2.0mm,width=1.35mm]},
+        line width=0.50pt,
         black!70
     }
 ]
 
-\node[head] (hmethod) at (0,0) {Method};
-\node[head] (hpurpose) at (8.10,0) {Purpose};
+\node[header] at (0,0) {Method};
+\node[header] at (8.35,0) {Purpose};
 
-\node[method] (m1) at (0,-1.75)
-    {\textbf{Room-temperature DIC\\tensile test}\\
-    Full-field strain measurement};
-\node[purpose] (p1) at (8.10,-1.75)
-    {Quantify corrugation-driven strain redistribution};
+\node[method] (m0) at (0,-1.45)
+{\textbf{Fabrication}\\
+Controlled forming of 316L sheet\\
+Corrugated specimen preparation};
 
-\node[method] (m2) at (0,-5.05)
-    {\textbf{AE-monitored cyclic\\loading}\\
-    Repeated mechanical loading};
-\node[purpose] (p2) at (8.10,-5.05)
-    {Assess cyclic response and activity evolution};
+\node[method] (m1) at (0,-3.45)
+{\textbf{DIC-instrumented tensile test}\\
+Four-axis cyclic stretching\\
+Full-field strain measurement};
 
-\node[method] (m3) at (0,-8.35)
-    {\textbf{LN$_2$ filling--draining\\cycles}\\
-    0.2~m$^{3}$ integrated demonstrator};
-\node[purpose] (p3) at (8.10,-8.35)
-    {Evaluate response to cryogenic thermal cycling};
+\node[method] (m2) at (0,-5.45)
+{\textbf{AE-instrumented tensile test}\\
+Four-axis cyclic stretching\\
+Acoustic emission monitoring};
 
-\node[method] (m4) at (0,-11.65)
-    {\textbf{Pressure hold + helium\\leak check}\\
-    Post-cycle integrity assessment};
-\node[purpose] (p4) at (8.10,-11.65)
-    {Verify pressure retention and gas-tightness};
+\node[method] (m3) at (0,-7.45)
+{\textbf{LN$_2$ cycling test}\\
+Assembled membrane structure\\
+Filling--draining cycles};
 
-\foreach \m/\p in {m1/p1,m2/p2,m3/p3,m4/p4}{%
+\node[purpose] (p0) at (8.35,-1.45)
+{Obtain target\\
+corrugated specimens\\
+and membrane modules};
+
+\node[purpose] (p1) at (8.35,-3.45)
+{Quantify full-field\\
+strain redistribution};
+
+\node[purpose] (p2) at (8.35,-5.45)
+{Track damage evolution\\
+during cyclic loading};
+
+\node[purpose] (p3) at (8.35,-7.45)
+{Verify assembly integrity\\
+after cryogenic cycling};
+
+\foreach \m/\p in {m0/p0,m1/p1,m2/p2,m3/p3}{%
     \draw[rowarrow] (\m.east) -- (\p.west);
 }
 
+\draw[downarrow] (m0.south) -- (m1.north);
 \draw[downarrow] (m1.south) -- (m2.north);
 \draw[downarrow] (m2.south) -- (m3.north);
-\draw[downarrow] (m3.south) -- (m4.north);
 
 \end{tikzpicture}
