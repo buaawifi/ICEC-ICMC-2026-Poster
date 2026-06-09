@@ -1,6 +1,11 @@
 % ---------- Panel C: Validation route ----------
+% Adjust these two values to tune the node spacing in Panel C.
+\def\validationRouteHorizontalGap{1.05cm}
+\def\validationRouteVerticalGap{0.70cm}
+
 \begin{tikzpicture}[
     font=\rmfamily,
+    node distance=\validationRouteVerticalGap and \validationRouteHorizontalGap,
     method/.style={
         draw=black!70,
         rounded corners=3pt,
@@ -41,45 +46,45 @@
     }
 ]
 
-\node[header] at (0,0) {Method};
-\node[header] at (8.35,0) {Purpose};
-
-\node[method] (m0) at (0,-1.45)
+\node[method] (m0)
 {\textbf{Fabrication}\\
 Controlled forming of 316L sheet\\
 Corrugated specimen preparation};
 
-\node[method] (m1) at (0,-3.45)
-{\textbf{DIC-instrumented tensile test}\\
-Four-axis cyclic stretching\\
-Full-field strain measurement};
-
-\node[method] (m2) at (0,-5.45)
-{\textbf{AE-instrumented tensile test}\\
-Four-axis cyclic stretching\\
-Acoustic emission monitoring};
-
-\node[method] (m3) at (0,-7.45)
-{\textbf{LN$_2$ cycling test}\\
-Assembled membrane structure\\
-Filling--draining cycles};
-
-\node[purpose] (p0) at (8.35,-1.45)
+\node[purpose,right=of m0] (p0)
 {Obtain target\\
 corrugated specimens\\
 and membrane modules};
 
-\node[purpose] (p1) at (8.35,-3.45)
+\node[method,below=of m0] (m1)
+{\textbf{DIC-instrumented tensile test}\\
+Four-axis cyclic stretching\\
+Full-field strain measurement};
+
+\node[purpose,right=of m1] (p1)
 {Quantify full-field\\
 strain redistribution};
 
-\node[purpose] (p2) at (8.35,-5.45)
+\node[method,below=of m1] (m2)
+{\textbf{AE-instrumented tensile test}\\
+Four-axis cyclic stretching\\
+Acoustic emission monitoring};
+
+\node[purpose,right=of m2] (p2)
 {Track damage evolution\\
 during cyclic loading};
 
-\node[purpose] (p3) at (8.35,-7.45)
+\node[method,below=of m2] (m3)
+{\textbf{LN$_2$ cycling test}\\
+Assembled membrane structure\\
+Filling--draining cycles};
+
+\node[purpose,right=of m3] (p3)
 {Verify assembly integrity\\
 after cryogenic cycling};
+
+\node[header,above=0.38cm of m0] {Method};
+\node[header,above=0.38cm of p0] {Purpose};
 
 \foreach \m/\p in {m0/p0,m1/p1,m2/p2,m3/p3}{%
     \draw[rowarrow] (\m.east) -- (\p.west);
