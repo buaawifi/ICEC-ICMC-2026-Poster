@@ -1,67 +1,82 @@
-\begin{posterblock}{white}{smugold}{smunavy}{smucream}{M. Methods: Design-to-Test Logic Chain}
+\begin{posterblock}{white}{smugold}{smunavy}{smucream}{M. Methods: Scaled Biaxial Validation Chain}
+\begingroup
 \compacttable
-\renewcommand{\arraystretch}{1.12}
-\begin{tabular}{@{}>{\bfseries}p{0.25\linewidth}p{0.18\linewidth}p{0.44\linewidth}@{}}
+\renewcommand{\arraystretch}{1.11}
+\begin{tabular}{@{}>{\bfseries}p{0.17\linewidth}p{0.33\linewidth}p{0.40\linewidth}@{}}
 \toprule
-Starting point & Value & Why it matters \\
+Method input & Actual setting & Role in the evidence chain \\
 \midrule
-Selected profile & $e_r=1.0$, $e_w=5.0$, $\lambda=0.651$ & best-performing geometry from the previous design screen \\
-Sheet and material & 316L, $t=1.2$ mm & thin metallic primary-barrier candidate \\
-Patent basis & CN118237450A & coupled downward pressing and lateral squeezing for equal-section cross corrugation \\
+Profile & 316L, $t=1.2$ mm; $e_r=1.0$, $e_w=5.0$, $\lambda=0.651$ & best-performing corrugated profile carried forward from the numerical design screen \\
+Coupon & $115\times115$ mm square specimen & square panel stretched along two orthogonal diagonal axes to activate the cross-corrugation mechanism \\
+Scaling & $u_{\mathrm{one\mbox{-}way}}=0.50$ mm on each diagonal axis & severe room-temperature displacement surrogate: $0.615\% =2.05\varepsilon_{\mathrm{th}}$, with $\varepsilon_{\mathrm{th}}=0.003$ \\
+Validation gates & DIC/PLC $\rightarrow$ AE cycling $\rightarrow$ LN$_2$ assembly check & strain redistribution first, cyclic activity second, pressure/leak integrity last \\
 \bottomrule
 \end{tabular}
+
+\vspace{0.55ex}
+\begin{columns}[t,totalwidth=\linewidth]
+\begin{column}{0.49\linewidth}
+\centering
+{\bfseries\color{smunavy}Specimen and diagonal loading}\par\vspace{0.25ex}
+\includegraphics[width=\linewidth,height=7.1cm,keepaspectratio]{assets/fig03_corrugated_specimen_quadrant_photo.jpg}
+
+\vspace{0.35ex}
+\includegraphics[width=\linewidth,height=7.5cm,keepaspectratio]{assets/fig02_biaxial_loading_fixture_render.png}
+\smallnote{The formed square coupon is loaded by opposed actuators on two orthogonal diagonals; each one-way actuator displacement is limited to 0.50 mm.}
+\end{column}
+\hfill
+\begin{column}{0.49\linewidth}
+\centering
+{\bfseries\color{smunavy}Full-field measurement context}\par\vspace{0.25ex}
+\includegraphics[width=\linewidth,height=7.1cm,keepaspectratio]{assets/fig03_specimen_in_test_frame_photo.jpg}
+
+\vspace{0.35ex}
+\includegraphics[width=\linewidth,height=7.5cm,keepaspectratio]{assets/fig03_dic_roi_grid_overlay.png}
+\smallnote{XTDIC-12M optical DIC records the strain field; geometry-fixed ROIs convert the field map into traceable strain-partition metrics.}
+\end{column}
+\end{columns}
+
+\vspace{0.65ex}
+{\fontsize{11.9}{13.6}\selectfont
+\[
+\begin{aligned}
+L_d &=115\sqrt{2}=162.6\ \mathrm{mm},
+&\varepsilon_{\mathrm{nom}}&=\frac{2u_{\mathrm{one\mbox{-}way}}}{L_d}
+=\frac{1.00}{115\sqrt{2}}=0.00615=2.05\varepsilon_{\mathrm{th}},\\[-0.1ex]
+S_i&=\frac{\Delta P_{95}(|\varepsilon|)_i}{\Delta\varepsilon_{\mathrm{nom}}},
+&Q_L&=-V\frac{dp}{dt}.
+\end{aligned}
+\]
+}
+\smallnote{The 2.05 factor is an intentional displacement amplification for mechanism observability and test-margin screening; it is not interpreted as the exact LH$_2$ service deformation.}
 
 \vspace{0.6ex}
-\begin{center}
-\resizebox{0.92\linewidth}{!}{%
-\begin{tikzpicture}[
-  wflow/.style={rounded corners=4pt,minimum width=5.25cm,minimum height=1.28cm,align=center,font=\bfseries\small},
-  arr/.style={-{Latex[length=3mm]},line width=0.9pt,draw=black!52}
-]
-\node[wflow,draw=smublue,fill=smublue!10] (s1) at (0,0) {1. Profile\\{\scriptsize previous best}};
-\node[wflow,draw=smugold,fill=smugold!12] (s2) at (6.4,0) {2. Patent process\\{\scriptsize die + side extrusion}};
-\node[wflow,draw=smugold,fill=smugold!12] (s3) at (12.8,0) {3. Samples\\{\scriptsize form + cut}};
-\node[wflow,draw=smucyan,fill=smucyan!11] (s4) at (12.8,-2.05) {4. DIC first\\{\scriptsize strain release}};
-\node[wflow,draw=smured,fill=smured!10] (s5) at (6.4,-2.05) {5. AE next\\{\scriptsize damage evolution}};
-\node[wflow,draw=smunavy,fill=smunavy!10] (s6) at (0,-2.05) {6. Assembly\\{\scriptsize LN$_2$ cycles}};
-\draw[arr] (s1.east) -- (s2.west);
-\draw[arr] (s2.east) -- (s3.west);
-\draw[arr] (s3.south) -- (s4.north);
-\draw[arr] (s4.west) -- (s5.east);
-\draw[arr] (s5.west) -- (s6.east);
-\end{tikzpicture}}
-\end{center}
-
-\begin{center}
-\includegraphics[width=\linewidth]{assets/fig02_uploaded_model_process_overview.png}
-\end{center}
-\smallnote{Selected profile $\rightarrow$ patented processing machine $\rightarrow$ four-axis specimen platform. The process figure is used as design and preparation context, not as a dimensional CAD claim.}
-
-\vspace{0.7ex}
-\begin{center}
-\includegraphics[width=\linewidth,height=18.0cm,keepaspectratio]{assets/fig02_experimental_setup_context.png}
-\end{center}
-\smallnote{Specimen extraction, DIC field of view, and mechanical setup connect the formed profile to the DIC/AE tests.}
-
-\vspace{0.5ex}
+\begin{columns}[t,totalwidth=\linewidth]
+\begin{column}{0.56\linewidth}
 \compacttable
-\renewcommand{\arraystretch}{1.12}
-\begin{tabular}{@{}>{\bfseries}p{0.20\linewidth}p{0.33\linewidth}p{0.35\linewidth}@{}}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{@{}>{\bfseries}p{0.19\linewidth}p{0.72\linewidth}@{}}
 \toprule
-Experiment & Direct question & Measured output \\
+Gate & Instrumentation and output \\
 \midrule
-DIC/PLC & How does corrugation release imposed strain? & synchronized strain span, geometry-fixed ROI hierarchy \\
-AE & When does cyclic activity concentrate? & relabeled cycle windows and damage-evolution screen \\
-LN$_2$ assembly & Does pressure-retention testing verify assembly integrity after thermal cycling? & pressure-hold and helium leak checks across five LN$_2$ cycles \\
+DIC/PLC & XTDIC-12M DIC system; synchronized displacement and full-field strain for ROI hierarchy and $S_i$ \\
+AE cycling & two AE154DL sensors, PXPA2D preamplifiers, PXWAE-2F acquisition and PXAES software; AE154DL: 150 kHz, 68$\pm$3 dB, $-196$--$+80^{\circ}$C \\
+Pressure & HM28-type HE28A004BV1F1W1 absolute transmitter; actual test range 0--4 bar abs. (0--0.40 MPa abs.), $\pm$0.1\%FS, 0.1 kPa resolution \\
+Helium leak & INFICON UL1000 helium mass-spectrometer leak detector; welds and interfaces scanned in sniffer mode after pressure-hold checks \\
 \bottomrule
 \end{tabular}
+\end{column}
+\hfill
+\begin{column}{0.41\linewidth}
+\centering
+{\bfseries\color{smunavy}Assembly integrity gate}\par\vspace{0.25ex}
+\includegraphics[width=0.49\linewidth,height=7.3cm,keepaspectratio]{assets/fig05_membrane_demonstrator_cad.png}\hfill
+\includegraphics[width=0.49\linewidth,height=7.3cm,keepaspectratio]{assets/fig05_assembled_membrane_demonstrator_photo.png}
+\smallnote{A 0.2 m$^3$ membrane demonstrator provides the LN$_2$ cycling, pressure-retention, and helium-leak-check gate for assembly integrity.}
+\end{column}
+\end{columns}
 
-\[
-\bar{u}_k=\frac{1}{4}\sum_{a=1}^{4}u_{a,k},
-\qquad
-S_i=\frac{dP_{95}(|\varepsilon_x|)_i}{d\bar{u}},
-\qquad
-\Psi_i=A_iq_i^2
-\]
-\smallnote{The evidence chain is deliberately ordered: profile and processing first, DIC mechanism second, AE damage-evolution screening third, and pressure-retention testing for assembly integrity last.}
+\vspace{0.5ex}
+\smallnote{Evidence boundary: DIC validates geometry-driven strain accommodation under the scaled room-temperature protocol; AE ranks cyclic activity and inspection priority; LN$_2$ cycling is a non-flammable cryogenic integrity screen before future LH$_2$ qualification.}
+\endgroup
 \end{posterblock}
